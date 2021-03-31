@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="KGk-i7-Jjw" customClass="PlanetTableViewCell" customModule="SpacedAutolayout" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="387" height="320"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="387" height="320"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jCz-gM-tqC" userLabel="Planet View">
+                        <rect key="frame" x="20" y="20" width="347" height="280"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moon" translatesAutoresizingMaskIntoConstraints="NO" id="EUA-PG-MNZ">
+                                <rect key="frame" x="20" y="20" width="307" height="240"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="384 KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sen-Nh-7Wu">
+                                <rect key="frame" x="20" y="14" width="52" height="18"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3,890 Voyages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2f-w2-I0b">
+                                <rect key="frame" x="227" y="14" width="100" height="18"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1j-vq-xKk">
+                                <rect key="frame" x="20" y="42" width="71" height="33"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="28"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Y2f-w2-I0b" secondAttribute="trailing" constant="20" id="9gN-Jh-XG9"/>
+                            <constraint firstAttribute="right" secondItem="EUA-PG-MNZ" secondAttribute="right" constant="20" id="Dxb-R5-do2"/>
+                            <constraint firstItem="m1j-vq-xKk" firstAttribute="leading" secondItem="jCz-gM-tqC" secondAttribute="leading" constant="20" id="GeR-47-KXE"/>
+                            <constraint firstItem="m1j-vq-xKk" firstAttribute="top" secondItem="Sen-Nh-7Wu" secondAttribute="bottom" constant="10" id="I6C-uB-MbP"/>
+                            <constraint firstAttribute="bottom" secondItem="EUA-PG-MNZ" secondAttribute="bottom" constant="20" id="LqU-5O-YOr"/>
+                            <constraint firstItem="EUA-PG-MNZ" firstAttribute="left" secondItem="jCz-gM-tqC" secondAttribute="left" constant="20" id="MzO-Fm-dZR"/>
+                            <constraint firstItem="Y2f-w2-I0b" firstAttribute="firstBaseline" secondItem="Sen-Nh-7Wu" secondAttribute="firstBaseline" id="Q4e-Gl-k5k"/>
+                            <constraint firstItem="EUA-PG-MNZ" firstAttribute="top" secondItem="jCz-gM-tqC" secondAttribute="top" constant="20" id="jfy-Yl-Xoq"/>
+                            <constraint firstItem="Sen-Nh-7Wu" firstAttribute="top" secondItem="jCz-gM-tqC" secondAttribute="top" constant="14" id="s9T-So-XZD"/>
+                            <constraint firstItem="Y2f-w2-I0b" firstAttribute="top" secondItem="Sen-Nh-7Wu" secondAttribute="top" id="tTm-kl-gJc"/>
+                            <constraint firstItem="Sen-Nh-7Wu" firstAttribute="leading" secondItem="jCz-gM-tqC" secondAttribute="leading" constant="20" id="vfd-bu-ScA"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hT7-db-QeJ">
+                        <rect key="frame" x="132" y="268" width="123.5" height="42"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                        <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="Know More" image="chevron.right" catalog="system"/>
+                        <connections>
+                            <action selector="onKnowMorePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6lC-H0-fLy"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="jCz-gM-tqC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="H6u-P4-nEe"/>
+                    <constraint firstItem="hT7-db-QeJ" firstAttribute="bottom" secondItem="jCz-gM-tqC" secondAttribute="bottom" constant="10" id="Pn1-tt-Ce1"/>
+                    <constraint firstItem="hT7-db-QeJ" firstAttribute="centerX" secondItem="jCz-gM-tqC" secondAttribute="centerX" id="WTD-Aa-Q0G"/>
+                    <constraint firstItem="jCz-gM-tqC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cEB-ZL-Vfz"/>
+                    <constraint firstAttribute="bottom" secondItem="jCz-gM-tqC" secondAttribute="bottom" constant="20" id="rOL-rA-9n6"/>
+                    <constraint firstAttribute="trailing" secondItem="jCz-gM-tqC" secondAttribute="trailing" constant="20" id="sis-Eu-VQs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnKnowMore" destination="hT7-db-QeJ" id="q2m-UR-HNb"/>
+                <outlet property="ivPlaner" destination="EUA-PG-MNZ" id="qpd-aL-1Tl"/>
+                <outlet property="lblDistanceFromEarth" destination="Sen-Nh-7Wu" id="tY7-xD-cbr"/>
+                <outlet property="lblNoOfVoyages" destination="Y2f-w2-I0b" id="Fic-q1-7zd"/>
+                <outlet property="lblPlanetName" destination="m1j-vq-xKk" id="N87-HV-ezt"/>
+            </connections>
+            <point key="canvasLocation" x="15.217391304347828" y="15.401785714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="moon" width="247" height="235"/>
+    </resources>
+</document>
