@@ -17,11 +17,13 @@ class BookingViewController: UIViewController {
     @IBOutlet weak var txtNoOfPassengers: UITextField!
     @IBOutlet weak var btnContinue: UIButton!
     
-    let pickerView = UIPickerView()
     var currentTextField = UITextField()
     
     var fromAddressList = ["JFK, New YorK, U.S.A", "IGN, Mumbai, India", "KMP, Singapore, Malaysia"]
     var noOfPassenger = ["1", "2", "3", "4", "5"]
+    
+    var formAddressPickerView = UIPickerView()
+    var noOfPassengersPickerView = UIPickerView()
     
     //MARK: - VC methods
     override func viewDidLoad() {
@@ -45,12 +47,17 @@ class BookingViewController: UIViewController {
     }
     
     func createPickerViews() {
-       // fromAddressPickerView()
+       fromAddressPickerView()
     }
     
     func fromAddressPickerView() {
-
-        txtSourceAddress.inputView = pickerView
+        formAddressPickerView.delegate = self
+        formAddressPickerView.dataSource = self
+        txtSourceAddress.inputView = formAddressPickerView
+        
+        noOfPassengersPickerView.delegate = self
+        noOfPassengersPickerView.dataSource = self
+        txtNoOfPassengers.inputView = noOfPassengersPickerView
     }
     
     func dismissPickerView() {
@@ -85,7 +92,7 @@ extension BookingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if currentTextField == txtSourceAddress {
+        if pickerView == formAddressPickerView {
             return self.fromAddressList.count
         } else {
             return self.noOfPassenger.count
@@ -93,7 +100,7 @@ extension BookingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if currentTextField == txtSourceAddress {
+        if pickerView == formAddressPickerView  {
             return self.fromAddressList[row]
         } else {
             return self.noOfPassenger[row]
@@ -101,7 +108,7 @@ extension BookingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if currentTextField == txtSourceAddress {
+        if pickerView == formAddressPickerView {
             self.txtSourceAddress.text = self.fromAddressList[row]
         } else {
             self.txtNoOfPassengers.text = self.noOfPassenger[row]
@@ -109,17 +116,17 @@ extension BookingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 }
 
-//MARK: - TEXTFIELD DELEGATE
-extension BookingViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.pickerView.delegate = self
-        self.pickerView.dataSource = self
-        currentTextField = textField
-        
-        if currentTextField == txtSourceAddress {
-            currentTextField.inputView = pickerView
-        } else {
-            currentTextField.inputView = pickerView
-        }
-    }
-}
+////MARK: - TEXTFIELD DELEGATE
+//extension BookingViewController: UITextFieldDelegate {
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        self.pickerView.delegate = self
+//        self.pickerView.dataSource = self
+//        currentTextField = textField
+//
+//        if currentTextField == txtSourceAddress {
+//            currentTextField.inputView = pickerView
+//        } else {
+//            currentTextField.inputView = pickerView
+//        }
+//    }
+//}
