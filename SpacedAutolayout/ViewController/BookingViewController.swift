@@ -19,6 +19,7 @@ class BookingViewController: UIViewController {
     
     let pickerView = UIPickerView()
     var currentTextField = UITextField()
+    var datePicker = UIDatePicker()
     
     var fromAddressList = ["JFK, New YorK, U.S.A", "IGN, Mumbai, India", "KMP, Singapore, Malaysia"]
     var noOfPassenger = ["1", "2", "3", "4", "5"]
@@ -27,7 +28,7 @@ class BookingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createPickerViews()
-        dismissPickerView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,16 +46,16 @@ class BookingViewController: UIViewController {
     }
     
     func createPickerViews() {
-       // fromAddressPickerView()
+        // fromAddressPickerView()
     }
     
     func fromAddressPickerView() {
-
+        
         txtSourceAddress.inputView = pickerView
     }
     
     func dismissPickerView() {
-        let toolBar = UIToolbar()
+        let toolBar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
         toolBar.sizeToFit()
         
         let button = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.donAction))
@@ -71,10 +72,43 @@ class BookingViewController: UIViewController {
         txtNoOfPassengers.applyGradient(colors: [Utilities.hexStringToUIColor("104494").cgColor, Utilities.hexStringToUIColor("66D9EF").cgColor])
     }
     
+    func showDatePicker() {
+        //Formate Date
+        txtFromDate.inputView = datePicker
+        txtToDate.inputView = datePicker
+        datePicker.preferredDatePickerStyle = .wheels
+
+        //ToolBar
+        let toolbar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
+        toolbar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(donedatePicker));
+     //   let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelDatePicker));
+        
+        toolbar.setItems([doneButton,cancelButton], animated: true)
+        
+        txtFromDate.inputAccessoryView = toolbar
+        txtToDate.inputAccessoryView = toolbar
+        datePicker.datePickerMode = .date
+
+    }
+    
     //MARK: - Selector actions
     @objc func donAction() {
-          view.endEditing(true)
-       }
+        view.endEditing(true)
+    }
+    
+    @objc func donedatePicker() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d, yyyy"
+        txtFromDate.text = formatter.string(from: datePicker.date)
+        txtToDate.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    @objc func cancelDatePicker() {
+        self.view.endEditing(true)
+    }
 }
 
 //MARK: - PICKERVIEW DELEGATES & DATA SOURCE
@@ -112,14 +146,20 @@ extension BookingViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 //MARK: - TEXTFIELD DELEGATE
 extension BookingViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.pickerView.delegate = self
-        self.pickerView.dataSource = self
-        currentTextField = textField
         
-        if currentTextField == txtSourceAddress {
-            currentTextField.inputView = pickerView
+        if textField == txtFromDate || textField == txtToDate {
+            showDatePicker()
         } else {
-            currentTextField.inputView = pickerView
+            self.pickerView.delegate = self
+            self.pickerView.dataSource = self
+            currentTextField = textField
+            
+            if currentTextField == txtSourceAddress {
+                currentTextField.inputView = pickerView
+            } else {
+                currentTextField.inputView = pickerView
+            }
+            dismissPickerView()
         }
     }
 }
